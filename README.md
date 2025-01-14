@@ -2,7 +2,6 @@
 This is an unorganized repo where I store scripts for various side projects. Most of the scripts in here are related to NFL stats and I will periodically update the README with info on what all lives in the repo.
 
 ## NFL Stats DB with SQLite
----
 Using `nfl_data_retrieval.py` you can set up a local database with NFL player stats and play-by-play data from 2024 in minutes. The data itself is courtesy of nflverse. You can check out the full data repo here: [https://github.com/nflverse/nflverse-data/releases](https://github.com/nflverse/nflverse-data/releases).
 
 In order to set up the database, start by cloning the repo and setting up the python virtual environment:
