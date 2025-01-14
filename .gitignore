@@ -1,3 +1,5 @@
 py311/
 raw_player_stats/*.csv
 raw_pbp_data/*.csv
+nfl_stats.db
+__pycache__/
