@@ -8,6 +8,7 @@ import sqlite3
 def get_league_play_by_play_data(season):
     base_url = 'https://github.com/nflverse/nflverse-data/releases/download/pbp/play_by_play_' + str(season) + '.csv.gz'
     pbp_data = pd.read_csv(base_url, compression='gzip', low_memory=False)
+    pbp_data = pbp_data[constants.pbp_filter_list]
     output_file = f"raw_pbp_data/{season}_NFL.csv"
     pbp_data.to_csv(output_file, index=False)
     return pbp_data
@@ -25,7 +26,10 @@ def get_offensive_player_stats(season):
 if __name__ == "__main__":
     try:
         db_conn = sqlite3.connect("nfl_stats.db")
-        #get_league_play_by_play_data(2024)
+        
+        pbp_df = get_league_play_by_play_data(2024)
+        pbp_df.to_sql('pbp_2024', db_conn, if_exists='replace', index=False)
+
         player_stats_season_df = get_offensive_player_stats(2024)
         player_stats_season_df.to_sql('player_stats_season_2024', db_conn, if_exists='replace', index=False)
     finally:
